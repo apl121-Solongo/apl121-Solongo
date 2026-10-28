@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="coldDay"/>
+        <attribute name="authors" value="Solongo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-10-28 10:47:52 PM"/>
+        <attribute name="created" value="U29sb25nbztERVNLVE9QLUEyNzBMUFA7MjAyNi0xMC0yODswOTowMzo1MSBQTTszMDU3"/>
+        <attribute name="edited" value="U29sb25nbztERVNLVE9QLUEyNzBMUFA7MjAyNi0xMC0yODsxMDo0Nzo1MiBQTTs2OzMxNzE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, coldDay" type="Integer" array="False" size=""/>
+            <declare name="temp, fahrenheit, minTemp" type="Real" array="False" size=""/>
+            <declare name="category, clothes" type="String" array="False" size=""/>
+            <assign variable="minTemp" expression="999"/>
+            <assign variable="coldDay" expression="0"/>
+            <for variable="i" start="1" end="7" direction="inc" step="1">
+                <input variable="temp"/>
+                <if expression="temp &lt; -50 or temp &gt; 50">
+                    <then>
+                        <output expression="&quot;INVALID temperature&quot;" newline="True"/>
+                        <input variable="temp"/>
+                    </then>
+                    <else>
+                        <assign variable="fahrenheit" expression="temp * 9 / 5 + 32"/>
+                        <if expression="temp &gt;= 5">
+                            <then>
+                                <assign variable="category" expression="&quot;Dulaahan&quot;"/>
+                                <assign variable="clothes" expression="&quot;Nimgen hurem&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="temp &gt;= 0">
+                                    <then>
+                                        <assign variable="category" expression="&quot;Seruuhen&quot;"/>
+                                        <assign variable="clothes" expression="&quot;Tsamts, hurem&quot;"/>
+                                    </then>
+                                    <else>
+                                        <if expression="temp &gt;= -10">
+                                            <then>
+                                                <assign variable="category" expression="&quot;Huiten&quot;"/>
+                                                <assign variable="clothes" expression="&quot;Uwliin kurtik, malgai&quot;"/>
+                                            </then>
+                                            <else>
+                                                <if expression="temp &gt;= -20">
+                                                    <then>
+                                                        <assign variable="category" expression="&quot;Mash huiten&quot;"/>
+                                                        <assign variable="clothes" expression="&quot;Zuzaan kurtik, beelii, oroolt&quot;"/>
+                                                    </then>
+                                                    <else>
+                                                        <assign variable="category" expression="&quot;Tas huiten&quot;"/>
+                                                        <assign variable="clothes" expression="&quot;Dulaan dawhar huwtsas, malgai, beelii, nooson umd&quot;"/>
+                                                    </else>
+                                                </if>
+                                                <output expression="temp &amp; &quot;C = &quot; &amp; fahrenheit &amp; &quot;F, &quot; &amp; category &amp; &quot;, &quot; &amp; clothes" newline="True"/>
+                                                <if expression="temp &lt; minTemp">
+                                                    <then>
+                                                        <assign variable="minTemp" expression="temp"/>
+                                                        <assign variable="coldDay" expression="i"/>
+                                                    </then>
+                                                    <else/>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <output expression="&quot;Hamgiin huiten udur:&quot; &amp; coldDay" newline="True"/>
+                <output expression="&quot;Hamgiin baga temp:&quot; &amp; minTemp &amp; &quot;C&quot;" newline="True"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
